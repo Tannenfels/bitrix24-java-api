@@ -6,6 +6,7 @@ import com.javastream.entity.Lead;
 import com.javastream.entity.model.Phone;
 import com.javastream.entity.types.PhoneType;
 import com.javastream.entity.types.SourceIdType;
+import com.javastream.examples.Example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +16,10 @@ import java.util.List;
  *
  * @author javastream
  */
-public class AddNewLead {
+public class AddNewLead extends Example {
 
     public static void main(String[] args) {
-        Client client = new Client(
-                Configs.token,
-                Configs.account,
-                Configs.restId
-        );
+        Client client = boot();
 
         Lead lead = new Lead();
 
@@ -34,6 +31,7 @@ public class AddNewLead {
                 .value("79310225686").valueType(PhoneType.HOME.getCode()).build();
         List<Phone> listPhones = new ArrayList<>();
         listPhones.add(phone);
+        lead.setOpportunity("0");
         lead.setPhones(listPhones);
 
         client.leadService().add(lead);
