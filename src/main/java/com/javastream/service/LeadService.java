@@ -22,9 +22,9 @@ import java.util.List;
  *
  * @author javastream
  */
-public final class LeadService {
+public class LeadService {
 
-    private final Logger logger = LoggerFactory.getLogger(LeadService.class);
+    private Logger logger = LoggerFactory.getLogger(LeadService.class);
 
     private final static String ADD_METHOD = "crm.lead.add";
     private final static String GET_METHOD = "crm.lead.get";
