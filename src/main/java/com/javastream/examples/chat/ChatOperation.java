@@ -6,6 +6,7 @@ import com.javastream.entity.Chat;
 import com.javastream.entity.Lead;
 import com.javastream.entity.model.chat.User;
 import com.javastream.entity.types.ChatColorType;
+import com.javastream.examples.Example;
 
 import java.util.List;
 
@@ -14,14 +15,10 @@ import java.util.List;
  *
  * @author javastream
  */
-public class ChatOperation {
+public class ChatOperation extends Example {
 
     public static void main(String[] args) {
-        Client client = new Client(
-                Configs.token,
-                Configs.account,
-                Configs.restId
-        );
+        Client client = boot();
 
         Lead lead = client.leadService().get(2);
         Chat chat = client.chatService().get(lead);
