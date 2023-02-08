@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 
 public class PushRunner {
 
-    private static final Logger logger = LoggerFactory.getLogger(PushRunner.class);
+    private static Logger logger = LoggerFactory.getLogger(PushRunner.class);
 
     private final static String HTTPS_ADDRESS = "https://";
     private final static String SLASH_PATTERN = "/";
