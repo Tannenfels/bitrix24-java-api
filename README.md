@@ -1,52 +1,22 @@
 # Bitrix24 Java API 
 
 ---
+#### Notice: This is a standalone fork of https://github.com/JavaStream/bitrix24-java-api which is going to be refactored entirely. 
+#### Backwards compatibility with the upstream IS NOT warranted.
 
+---
 <p align="center">
 <sup>
 <b> This Java project is designed to be simple and efficient. Now you can work with **CRM Bitrix24.ru** using our API, that provide good functionality. 
-Essentially, API provided work with Contact, Lead, Company, Product, Product Section and Chat. If you have any questions send me an email: javastream.msn@gmail.com  </b> 
+Essentially, API provided work with Contact, Lead, Company, Product, Product Section and Chat. </b> 
 </sup>
 </p>
-
----
-
-
-[![Latest Version](https://img.shields.io/github/release/JavaStream/bitrix24-java-api.svg?style=flat-square)](https://github.com/releases)
-[![GitHub contributors][contributors-image]][contributors-url]
-[![HitCount](http://hits.dwyl.io/JavaStream/bitrix24-java-api.svg)](http://hits.dwyl.io/JavaStream/bitrix24-java-api)
-[![Total Downloads](https://img.shields.io/github/downloads/JavaStream/bitrix24-java-api/total.svg)](https://github.com/JavaStream/bitrix24-java-api/releases)
-
-
-[contributors-url]: https://github.com/JavaStream/bitrix24-java-api/graphs/contributors
-[contributors-image]: https://img.shields.io/github/contributors/JavaStream/bitrix24-java-api.svg
-
 
 
 QUICK START
 ------------
 
 >Step 1. Add dependency:
-
-**For Maven project:**
-
-``` XML
-<repositories>
-	<repository>
-	   <id>jitpack.io</id>
-	   <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-``` XML
-<dependency>
-    <groupId>com.github.JavaStream</groupId>
-    <artifactId>bitrix24-java-api</artifactId>
-    <version>v2022.3</version>
-</dependency>
-```
-
 
 **For Gradle project:**
 
@@ -62,7 +32,7 @@ allprojects {
 
 ``` XML
 dependencies {
-    implementation 'com.github.JavaStream:bitrix24-java-api:1.3'
+    implementation 'com.github.Tannenfels:bitrix24-java-api:master-SNAPSHOT'
 }
 ```
 

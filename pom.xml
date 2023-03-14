@@ -8,9 +8,9 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.javastream</groupId>
+	<groupId>io.github.tannenfels</groupId>
 	<artifactId>bitrix24-java-api</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>bitrix24-java-api</name>
 	<description>Java API for Bitrix24</description>
 
