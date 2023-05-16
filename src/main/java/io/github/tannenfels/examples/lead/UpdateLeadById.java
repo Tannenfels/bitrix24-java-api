@@ -24,7 +24,7 @@ public class UpdateLeadById {
                 Configs.restId
         );
 
-        Lead lead = client.leadService().get(18753);
+        Lead lead = client.leadService().get(0);
 
         lead.setName("Albert");
         lead.setLastName("Shtein");
