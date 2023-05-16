@@ -5,7 +5,6 @@ import io.github.tannenfels.configs.Configs;
 import io.github.tannenfels.entity.Lead;
 import io.github.tannenfels.entity.model.Email;
 import io.github.tannenfels.entity.model.Website;
-import com.javastream.entity.types.*;
 import io.github.tannenfels.entity.types.*;
 
 import java.util.ArrayList;
@@ -25,13 +24,13 @@ public class UpdateLeadById {
                 Configs.restId
         );
 
-        Lead lead = client.leadService().get(4);
+        Lead lead = client.leadService().get(18753);
 
         lead.setName("Albert");
         lead.setLastName("Shtein");
         lead.setAddress("West Olympic Boulevard Apt. 100");
         lead.setComments("Interested in price");
-        lead.setStatusId(StatusIdType.NEW.getCode());
+        lead.setStatusId(StatusIdType.PROCESSED.getCode());
         lead.setCurrencyId(CurrencyIdType.EUR.getCode());
         lead.setSourceId(SourceIdType.RECOMMENDATION.getCode());
 
@@ -44,12 +43,14 @@ public class UpdateLeadById {
         client.leadService().update(lead);
 
         // update existing website
-        Website website = lead.getWebsites().get(0);
-        website.setValue("www.albert-best.org");
-        website.setValueType(WebsiteType.OTHER.getCode());
-        List<Website> websitList = new ArrayList<>();
-        websitList.add(website);
-        lead.setWebsites(websitList);
+        if (lead.getWebsites() != null) {
+            Website website = lead.getWebsites().get(0);
+            website.setValue("www.albert-best.org");
+            website.setValueType(WebsiteType.OTHER.getCode());
+            List<Website> websitList = new ArrayList<>();
+            websitList.add(website);
+            lead.setWebsites(websitList);
+        }
 
         client.leadService().update(lead);
     }

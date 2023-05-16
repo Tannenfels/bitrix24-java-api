@@ -34,5 +34,6 @@ public class AddNewLead extends Example {
         lead.setPhones(listPhones);
 
         client.leadService().add(lead);
+        System.out.println(lead.getId());
     }
 }

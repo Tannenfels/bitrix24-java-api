@@ -11,11 +11,6 @@ import lombok.ToString;
 
 import java.util.List;
 
-/**
- * Lead.
- *
- * @author javastream
- */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
@@ -140,4 +135,23 @@ public class Lead extends Entity{
 
     @SerializedName("WEB")
     private List<Website> websites;
+
+    public Lead addPhone(Phone phone)
+    {
+        this.phones.add(phone);
+
+        return this;
+    }
+
+    public Lead addEmail(Email email) {
+        this.emails.add(email);
+
+        return this;
+    }
+    public Lead addMessenger(Messenger messenger)
+    {
+        this.messengers.add(messenger);
+
+        return this;
+    }
 }

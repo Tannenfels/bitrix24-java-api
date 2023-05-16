@@ -1,6 +1,7 @@
 package io.github.tannenfels.utils;
 
 import io.github.tannenfels.configs.Settings;
+import io.github.tannenfels.service.LeadService;
 import io.github.tannenfels.uriParamsCreator.UriParamsCreator;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -13,6 +14,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.Objects;
 
 
 public class PushRunner {
@@ -25,17 +28,28 @@ public class PushRunner {
 
     public static JSONObject post(UriParamsCreator params, String method) {
         JSONObject jsonResult = null;
+        HttpResponse response;
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         String url = HTTPS_ADDRESS + getAccount() + SLASH_PATTERN + REST_FIELD + SLASH_PATTERN + getRestID() + SLASH_PATTERN +
                 getToken() + SLASH_PATTERN + method + params;
 
         HttpPost request = new HttpPost(url);
+
+        //Temporary horrid hack, for no reason stopped working as intended until did this
+        if (Objects.equals(method, LeadService.ADD_METHOD)) {
+            request.setURI(URI.create(HTTPS_ADDRESS + getAccount() + SLASH_PATTERN + REST_FIELD + SLASH_PATTERN + getRestID() + SLASH_PATTERN +
+                getToken() + SLASH_PATTERN + method));
+        }
+
         request.addHeader("content-type", "application/json");
 
         try {
-            HttpResponse response = httpClient.execute(request);
-            logger.info("Request {}, status of response: {}", method, response.getStatusLine().getStatusCode());
+            response = httpClient.execute(request);
+            logger.info("Request {}, status of response: {}, message: {}",
+                    method,
+                    response.getStatusLine().getStatusCode(),
+                    response.getStatusLine().getReasonPhrase());
 
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));

@@ -30,7 +30,11 @@ public class ContactService {
         logger.info("Request: Add a new contact: {}", contact.getName());
         try {
             UriParamsCreator params = new ParamContactUtils().addMethod(contact);
-            PushRunner.post(params, ADD_METHOD);
+            JSONObject result = PushRunner.post(params, ADD_METHOD);
+            assert result != null;
+            Integer contactId = Integer.parseInt(result.get("result").toString());
+
+            contact.setId(contactId);
         } catch (UnsupportedEncodingException e) {
             logger.error("An error occurred while adding new contact", e);
         }
@@ -50,6 +54,10 @@ public class ContactService {
         JSONObject jsonResult = jsonMain.getJSONObject("result");
         Gson gson = new Gson();
         return gson.fromJson(jsonResult.toString(), Contact.class);
+    }
+
+    public Contact get(Contact contact) {
+        return this.get(contact.getId());
     }
 
     public void update(Contact contact) {

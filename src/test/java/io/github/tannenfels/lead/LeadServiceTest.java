@@ -4,7 +4,6 @@ import io.github.tannenfels.Client;
 import io.github.tannenfels.entity.Lead;
 import io.github.tannenfels.entity.model.Email;
 import io.github.tannenfels.entity.model.Website;
-import com.javastream.entity.types.*;
 import io.github.tannenfels.entity.types.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

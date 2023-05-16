@@ -26,7 +26,11 @@ public class ProductSectionService {
     public void add(ProductSection productSection) {
         logger.info("Request: Add a new product section: {}", productSection.getName());
         UriParamsCreator params = new ParamProductSectionUtils().addMethod(productSection);
-        PushRunner.post(params, ADD_METHOD);
+        JSONObject result = PushRunner.post(params, ADD_METHOD);
+        assert result != null;
+        Integer productSectionId = Integer.parseInt(result.get("result").toString());
+
+        productSection.setId(productSectionId);
     }
 
     public void delete(Integer idSection) {

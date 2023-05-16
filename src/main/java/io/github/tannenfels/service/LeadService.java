@@ -26,11 +26,11 @@ public class LeadService {
 
     private Logger logger = LoggerFactory.getLogger(LeadService.class);
 
-    private final static String ADD_METHOD = "crm.lead.add";
-    private final static String GET_METHOD = "crm.lead.get";
-    private final static String DELETE_METHOD = "crm.lead.delete";
-    private final static String UPDATE_METHOD = "crm.lead.update";
-    private final static String LIST_METHOD = "crm.lead.list";
+    public final static String ADD_METHOD = "crm.lead.add";
+    public final static String GET_METHOD = "crm.lead.get";
+    public final static String DELETE_METHOD = "crm.lead.delete";
+    public final static String UPDATE_METHOD = "crm.lead.update";
+    public final static String LIST_METHOD = "crm.lead.list";
 
     public void add(Lead lead) {
         try {
@@ -69,6 +69,7 @@ public class LeadService {
     }
 
     public void delete(Integer idLead) {
+        assert idLead != null;
         logger.info("Request: Delete the lead by id: {}", idLead);
         UriParamsCreator params = new ParamLeadUtils().deleteMethod(idLead);
         PushRunner.post(params, DELETE_METHOD);

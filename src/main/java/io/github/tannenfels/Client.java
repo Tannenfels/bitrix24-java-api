@@ -1,7 +1,6 @@
 package io.github.tannenfels;
 
 import io.github.tannenfels.configs.Settings;
-import com.javastream.service.*;
 import io.github.tannenfels.service.*;
 
 public class Client {

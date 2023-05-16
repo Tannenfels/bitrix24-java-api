@@ -35,8 +35,12 @@ public class CompanyService {
         logger.info("Request to add a new company: {}", company.getTitle());
         try {
             UriParamsCreator params = new ParamCompanyUtils().addMethod(company);
-            PushRunner.post(params, ADD_METHOD);
-        } catch (UnsupportedEncodingException e) {
+            JSONObject result = PushRunner.post(params, ADD_METHOD);
+            assert result != null;
+            Integer companyId = Integer.parseInt(result.get("result").toString());
+
+            company.setId(companyId);
+        } catch (UnsupportedEncodingException|AssertionError e) {
             logger.error("An error occurred while adding new company", e);
         }
     }

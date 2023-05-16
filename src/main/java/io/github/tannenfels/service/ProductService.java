@@ -26,9 +26,13 @@ public class ProductService {
     private final static String UPDATE_METHOD = "crm.product.update";
 
     public void add(Product product) {
-        logger.info("Request: Add a new product: {}", product.getId());
+        logger.info("Request: Add a new product: {}", product.getName());
         UriParamsCreator params = new ParamProductUtils().addMethod(product);
-        PushRunner.post(params, ADD_METHOD);
+        JSONObject result = PushRunner.post(params, ADD_METHOD);
+        assert result != null;
+        Integer productId = Integer.parseInt(result.get("result").toString());
+
+        product.setId(productId);
     }
 
     public void delete(Integer idProduct) {

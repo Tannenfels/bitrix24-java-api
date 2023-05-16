@@ -99,10 +99,14 @@ public class ChatService {
 
     public void createChat(Chat chat, Lead lead, List<User> users) {
         if (chat.getMessage() != null) {
-            logger.info("New chat {} was created", chat.getId());
-
             UriParamsCreator params = new ParamChatUtils().paramsForCreateChat(chat, lead, users);
-            PushRunner.post(params, ADD_CHAT_METHOD);
+            JSONObject result = PushRunner.post(params, ADD_CHAT_METHOD);
+            assert result != null;
+            String chatId = result.get("result").toString();
+
+            chat.setId(chatId);
+
+            logger.info("New chat {} was created", chat.getId());
         } else {
             logger.warn("The created Chat must contain a message. This is a required field! It can be done like this: chat.setMESSAGE(\"Your message..\")");
         }
