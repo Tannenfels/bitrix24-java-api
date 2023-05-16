@@ -24,8 +24,12 @@ public class UpdateLeadById {
                 Configs.restId
         );
 
-        Lead lead = client.leadService().get(0);
+        //insert correct existing lead ID here
+        int leadId = 0;
+        
+        Lead lead = client.leadService().get(leadId);
 
+        assert lead != null;
         lead.setName("Albert");
         lead.setLastName("Shtein");
         lead.setAddress("West Olympic Boulevard Apt. 100");
