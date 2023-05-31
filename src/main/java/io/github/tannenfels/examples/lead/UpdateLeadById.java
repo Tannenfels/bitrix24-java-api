@@ -23,9 +23,8 @@ public class UpdateLeadById {
                 Configs.account,
                 Configs.restId
         );
-
-        //insert correct existing lead ID here
-        int leadId = 0;
+        
+        int leadId = AddNewLead.handle().getId();
         
         Lead lead = client.leadService().get(leadId);
 

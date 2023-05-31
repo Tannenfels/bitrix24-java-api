@@ -18,6 +18,11 @@ import java.util.List;
 public class AddNewLead extends Example {
 
     public static void main(String[] args) {
+        handle();
+    }
+
+    public static Lead handle()
+    {
         Client client = boot();
 
         Lead lead = new Lead();
@@ -34,6 +39,7 @@ public class AddNewLead extends Example {
         lead.setPhones(listPhones);
 
         client.leadService().add(lead);
-        System.out.println(lead.getId());
+
+        return lead;
     }
 }
