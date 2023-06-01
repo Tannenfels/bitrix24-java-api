@@ -6,6 +6,7 @@ import io.github.tannenfels.entity.Lead;
 import io.github.tannenfels.entity.model.Email;
 import io.github.tannenfels.entity.model.Website;
 import io.github.tannenfels.entity.types.*;
+import io.github.tannenfels.examples.Example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +16,10 @@ import java.util.List;
  *
  * @author javastream
  */
-public class UpdateLeadById {
+public class UpdateLeadById extends Example {
 
     public static void main(String[] args) {
-        Client client = new Client(
-                Configs.token,
-                Configs.account,
-                Configs.restId
-        );
+        Client client = boot();
         
         int leadId = AddNewLead.handle().getId();
         

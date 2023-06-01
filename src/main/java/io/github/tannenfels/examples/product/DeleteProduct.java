@@ -14,6 +14,8 @@ public class DeleteProduct extends Example {
     public static void main(String[] args) {
         Client client = boot();
 
-        client.productService().delete(6);
+        int productId = AddProduct.handle().getId();
+
+        client.productService().delete(productId);
     }
 }

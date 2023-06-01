@@ -2,21 +2,20 @@ package io.github.tannenfels.examples.lead;
 
 import io.github.tannenfels.Client;
 import io.github.tannenfels.configs.Configs;
+import io.github.tannenfels.examples.Example;
 
 /**
  * DeleteLeadById.
  *
  * @author javastream
  */
-public class DeleteLeadById {
+public class DeleteLeadById extends Example {
 
     public static void main(String[] args) {
-        Client client = new Client(
-                Configs.token,
-                Configs.account,
-                Configs.restId
-        );
+        Client client = boot();
 
-        client.leadService().delete(8);
+        int leadId = AddNewLead.handle().getId();
+
+        client.leadService().delete(leadId);
     }
 }

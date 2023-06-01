@@ -15,6 +15,9 @@ public class GetProduct extends Example {
     public static void main(String[] args) {
         Client client = boot();
 
-        Product product = client.productService().get(4);
+        int productId = AddProduct.handle().getId();
+        Product product = client.productService().get(productId);
+
+        System.out.println(product);
     }
 }
